@@ -28,11 +28,11 @@ Expected Output:
 Correct XML to JSON Conversion:
 
 Correct XML -> JSON Conversion:
-{"NameId": "barney@latacora.com"}
+{"NameId": "trump@org.com"}
 Malicious XML to JSON Conversion:
 
 Malicious XML -> JSON Conversion:
-{"NameId": "barney@latacora.com.evil.com"}
+{"NameId": "trump@org.com.evil.com"}
 </pre>
 
 ## JSON and Canonicalization:
