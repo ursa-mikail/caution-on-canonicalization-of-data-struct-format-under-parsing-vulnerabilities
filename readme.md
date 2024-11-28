@@ -2,14 +2,15 @@
 
 This memo serves as a cautionary note regarding the challenges and vulnerabilities associated with canonicalization processes in various data formats, specifically XML and JSON. While these processes may seem simple in concept, their implementations can often lead to severe security vulnerabilities if not handled with precision. One of the most notable issues is the misalignment between canonicalization strategies and parsing expectations, leading to unexpected or malicious behavior in systems that rely on these standards.
 
+<hr>
 
-Canonicalization Challenges:
+## Canonicalization Challenges:
 
 The term "canonicalization" refers to the process of converting data into a standard, well-defined format. Mismatched formats in canonicalization can create a vulnerability. 
 
 The bug utilized a specially crafted <NameId> element in the SAML assertion, which contained a comment that would be processed differently depending on the canonicalization and parsing strategies used. This discrepancy caused one system to interpret the NameId as a valid address, while the other incorrectly parsed the NameId, allowing attackers to bypass validation mechanisms.
 
-Key Example – SAML Vulnerability:
+## Key Example – SAML Vulnerability:
 
 This bug broke basically every SAML implementation. One notable example of a critical canonicalization bug occurred in the SAML (Security Assertion Markup Language) ecosystem, which broke numerous SAML implementations. This vulnerability was exploited through NameId manipulation.
 
@@ -32,15 +33,17 @@ Malicious XML to JSON Conversion:
 
 Malicious XML -> JSON Conversion:
 {"NameId": "barney@latacora.com.evil.com"}
-<pre>
+</pre>
 
-JSON and Canonicalization:
+## JSON and Canonicalization:
 
 While transitioning from XML to JSON might appear simpler, it comes with its own set of canonicalization issues. There are at least two specifications to consider: Canonical JSON from OLPC and the RFC governing JSON. Both have their own nuances, and the process of canonicalizing and validating JSON is not always straightforward or foolproof. Like XML, canonicalization issues can lead to inconsistent or unintended behaviors, especially in security-sensitive operations.
 
-Recommendation:
+## Recommendation:
 
-Strict Validation: Always ensure that the canonicalization and parsing strategies are consistent across all components of a system. The validation process should match the expectations of all parties involved (e.g., IdPs, Service Providers, etc.).
+Strict Validation: Always ensure that the canonicalization and parsing strategies are consistent across all components of a system. The validation process should match the expectations of all parties involved (e.g., IdPs, Service Providers, etc.). 
+
+Strict Formats and Templates: Ensure start, length, end (termination), hashed, etc. 
 
 Comprehensive Testing: Conduct thorough testing to ensure that canonicalization processes do not introduce security holes. Implement automated tests that validate data integrity across various formats (XML, JSON, etc.).
 
