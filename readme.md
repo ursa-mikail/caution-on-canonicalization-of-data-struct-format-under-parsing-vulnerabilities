@@ -54,8 +54,11 @@ The goal is to simulate and analyze how adding padding (e.g., underscores) befor
 
 ### Key Functions
 Tag Generation: Random bytes are generated and appended to the tag for demonstration.
+
 Corruption Simulation: Underscores (5f) are added to the tag to manipulate the starting position for extraction.
+
 Extraction: The program extracts the tag starting from a defined position, either from the uncorrupted data or the corrupted data.
+
 Potential Impact: If a program blindly extracts data from specific positions without validation or handling for unexpected shifts, an attacker can manipulate the extraction to pull out unintended values, potentially leaking sensitive information or causing failures in processing.
 
 ### Usage:
