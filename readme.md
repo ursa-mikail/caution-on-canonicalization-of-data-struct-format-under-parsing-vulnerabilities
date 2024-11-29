@@ -39,6 +39,35 @@ Malicious XML -> JSON Conversion:
 
 While transitioning from XML to JSON might appear simpler, it comes with its own set of canonicalization issues. There are at least two specifications to consider: Canonical JSON from OLPC and the RFC governing JSON. Both have their own nuances, and the process of canonicalizing and validating JSON is not always straightforward or foolproof. Like XML, canonicalization issues can lead to inconsistent or unintended behaviors, especially in security-sensitive operations.
 
+<hr>
+
+# Simulating Malicious Tag Corruption and Extraction Vulnerability
+Demonstrates how a malicious coder could corrupt tag during parsing and comparison. 
+Attacker gets all the 5fs he wants, because the tag is padded with _* and he corrupts the parsing.
+
+Demonstrates a scenario where a malicious actor corrupts tag extraction by adding padding (underscores or 5f in hexadecimal) before the actual tag. 
+This corruption causes the program to extract the padding instead of the intended data when extracting a tag from byte data.
+
+## Purpose
+
+The goal is to simulate and analyze how adding padding (e.g., underscores) before the tag can shift the extraction position, leading to incorrect data being pulled out, especially when a program is designed to extract a specific tag at a certain position in the data.
+
+### Key Functions
+Tag Generation: Random bytes are generated and appended to the tag for demonstration.
+Corruption Simulation: Underscores (5f) are added to the tag to manipulate the starting position for extraction.
+Extraction: The program extracts the tag starting from a defined position, either from the uncorrupted data or the corrupted data.
+Potential Impact: If a program blindly extracts data from specific positions without validation or handling for unexpected shifts, an attacker can manipulate the extraction to pull out unintended values, potentially leaking sensitive information or causing failures in processing.
+
+### Usage:
+
+Correct Extraction: When the tag is extracted from the correct position, the program retrieves the intended tag data.
+Corrupted Extraction: By adding padding (e.g., underscores or 5f values), the program mistakenly extracts the padding instead of the tag.
+Security Implication: This highlights a vulnerability in systems where precise data extraction is crucial, and adversaries can manipulate input data to change the extraction logic or leak information. Proper validation and error handling are essential in such systems to prevent exploitation.
+"""
+
+
+<hr>
+
 ## Recommendation:
 
 Strict Validation: Always ensure that the canonicalization and parsing strategies are consistent across all components of a system. The validation process should match the expectations of all parties involved (e.g., IdPs, Service Providers, etc.). 
