@@ -61,10 +61,10 @@ Potential Impact: If a program blindly extracts data from specific positions wit
 ### Usage:
 
 Correct Extraction: When the tag is extracted from the correct position, the program retrieves the intended tag data.
-Corrupted Extraction: By adding padding (e.g., underscores or 5f values), the program mistakenly extracts the padding instead of the tag.
-Security Implication: This highlights a vulnerability in systems where precise data extraction is crucial, and adversaries can manipulate input data to change the extraction logic or leak information. Proper validation and error handling are essential in such systems to prevent exploitation.
-"""
 
+Corrupted Extraction: By adding padding (e.g., underscores or 5f values), the program mistakenly extracts the padding instead of the tag.
+
+Security Implication: This highlights a vulnerability in systems where precise data extraction is crucial, and adversaries can manipulate input data to change the extraction logic or leak information. Proper validation and error handling are essential in such systems to prevent exploitation.
 
 <hr>
 
